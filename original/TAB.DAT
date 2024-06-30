@@ -1,0 +1,94 @@
+procedure cls;
+var i:integer;
+begin
+setcolor(8);
+for i:=30 to 118 do line(1,i,228,i);
+setcolor(10);
+end;
+function fp(v:string):str8;
+var i:integer;
+    s:str8;
+begin
+i:=1;s:='';
+while copy(v,i,1)<>'.' do begin s:=s+copy(v,i,1);inc(i);end;
+fp:=s;
+end;
+procedure tabb(x,y:integer);
+var t:searchrec;
+label 1,2,3,4,5;
+begin
+if not(pass) then exit;
+new(save);
+getimage(x,y,x+229,y+119,save^);
+setviewport(x,y,x+229,y+119,clipon);
+clearviewport;
+setcolor(8);
+for i:=0 to 119 do line(0,i,229,i);
+setcolor(15);
+rectangle(0,0,229,119);line(0,20,229,20);
+setcolor(12);outtextxy(40,7,'LIBRARY :    file(s)');
+sp:='plot\*.zpx';
+findfirst(sp,anyfile,t);k:=0;
+while doserror=0 do begin
+inc(k);findnext(t);end;str(k,s);
+setcolor(11);outtextxy(115,7,copy(s,1,2));
+1:setcolor(10);findfirst(sp,anyfile,t);
+outtextxy(10,30,fp(t.name));
+if k>-1 then begin
+             for i:=1 to trunc(k/16) do begin
+2:                       for j:=1 to 8 do begin
+                         if (i=1) and (j=1) then inc(j);
+                         findnext(t);outtextxy(10,20+j*10,fp(t.name));
+                         end;
+                         for j:=1 to 8 do begin
+                         findnext(t);outtextxy(130,20+j*10,fp(t.name));
+                         end;
+repeat
+repeat until keypressed;ch:=readkey;
+if ch=#27 then begin ch:=#0;goto 5;end;
+if ch='+' then begin cls;goto 3;end;
+if ch='-' then begin if i>0 then begin
+                                 findfirst(sp,anyfile,t);dec(i);
+                                 for j:=1 to i*16 do findnext(t);
+                                 cls;
+                                 goto 2;
+                                 end;
+                     if i=0 then begin
+                                 findfirst(sp,anyfile,t);
+                                 for i:=2 to trunc(k/16) do findnext(t);
+                                 goto 4;
+                                 end;
+               end;
+until false;
+3:             end;
+4:           if k>16 then cls;
+             if k-trunc(k/16)*16<9 then
+             for j:=1 to k-trunc(k/16)*16 do begin
+             if (k<16) and (j=1) then inc(j);
+             findnext(t);outtextxy(10,20+j*10,fp(t.name));
+             end
+                                   else begin
+             for j:=1 to 8 do begin
+             if (k<16) and (j=1) then inc(j);
+             findnext(t);outtextxy(10,20+j*10,fp(t.name));
+             end;
+             for j:=1 to k-trunc(k/16)*16-8 do begin
+             findnext(t);outtextxy(130,20+j*10,fp(t.name));
+             end;
+             end;
+             end;
+repeat
+repeat until keypressed;ch:=readkey;
+if ch=#27 then begin ch:=#0;goto 5;end;
+if ch='+' then begin cls;goto 1;end;
+if ch='-' then begin
+               findfirst(sp,anyfile,t);dec(i);j:=0;
+               while j<i*16 do begin inc(j);findnext(t);end;
+               cls;
+               goto 2;
+               end;
+until false;
+5:setviewport(0,0,getmaxx,getmaxy,clipon);
+putimage(x,y,save^,0);
+dispose(save);
+end;

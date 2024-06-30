@@ -1,0 +1,40 @@
+procedure typpe(x,y:integer);
+begin
+i:=1;
+repeat
+setcolor(11);
+outtextxy(x+i*10,y,'_');
+setcolor(0);
+outtextxy(x+i*10,y,'_');
+if keypressed then begin
+ch:=readkey;
+if ch=#27 then begin k:=0;ch:=#0;exit;end;
+if ch=#8  then if i>1 then begin
+                    setcolor(0);dec(i);
+                    outtextxy(x+i*10+10,y,'_');
+                    outtextxy(x+i*10,y,s[i]);s[i]:=' ';
+                    end
+                          else begin
+                    setcolor(0);
+                    outtextxy(x+10,y,s[1]);
+                    s[1]:=' ';
+                    setcolor(11);
+                    end;
+if ch=#13 then begin setcolor(0);
+                     if i=9 then outtextxy(x+i*10+10,y,'_')
+                            else outtextxy(x+i*10,y,'_');
+                     exit;
+                     end;
+if (ch>#31) and (ch<#123) then begin
+                               setcolor(0);
+                               outtextxy(x+10*i,y,'_');
+                               if i<9 then begin
+                               setcolor(11);
+                               s[i]:=ch;
+                               outtextxy(x+i*10,y,s[i]);
+                               inc(i);
+                               end;
+                               end;
+end;
+until false;
+end;

@@ -1,0 +1,35 @@
+procedure bord;
+var i:integer;
+begin
+{for i:=0 to 3 do begin
+   setcolor(2+2*i);
+   rectangle(2*i,2*i,getmaxx-2*i,getmaxy-2*i);
+end;
+for i:=2 to 3 do begin
+   setcolor(2+2*i);
+   line(6,386+2*i,getmaxx-6,386+2*i);
+end;
+for i:=2 to 3 do begin
+   setcolor(2+2*i);
+   line(6,400-2*i,getmaxx-6,400-2*i);
+end;}
+setwstyle(11,1,8,4);
+window(0,0,639,394);
+window(0,395,299,479);
+window(300,395,639,479);
+setfillstyle(1,0);
+bar(5,5,634,389);
+bar(5,400,294,474);
+bar(305,400,634,474);
+setcolor(2);
+outtextxy(310,420,'limx:');
+outtextxy(380,420,'limy:');
+outtextxy(450,420,'zoom:');
+outtextxy(getmaxx-90,getmaxy-20,'color:');
+outtextxy(310,getmaxy-20,'ox:');
+outtextxy(380,getmaxy-20,'oy:');
+setcolor(14);
+str(limx,s);outtextxy(310,435,copy(s,1,3));
+str(limy,s);outtextxy(380,435,copy(s,1,2));
+str(n,s);outtextxy(450,435,copy(s,1,1));
+end;

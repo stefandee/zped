@@ -1,0 +1,41 @@
+procedure mouseda(nr:word);
+inline($58/$cd/$33);
+procedure mousedata;
+begin
+asm
+   mov ax,m1
+   mov bx,m2
+   mov cx,m3
+   mov dx,m4
+   int $33
+   mov m1,ax
+   mov m2,bx
+   mov m3,cx
+   mov m4,dx
+end;
+end;
+procedure mouseinit;
+begin
+mouseda(2);
+mouseda(0);
+mouseda(1);
+mousedata;
+end;
+procedure poz;
+begin
+m1:=3;
+mousedata;
+px:=m3;
+py:=m4;
+end;
+procedure mousefer(x1,y1,x2,y2:integer);
+begin
+m1:=7;
+m3:=x1;
+m4:=x2;
+mousedata;
+m1:=8;
+m3:=y1;
+m4:=y2;
+mousedata;
+end;

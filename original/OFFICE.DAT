@@ -1,0 +1,12 @@
+function pas:boolean;
+begin
+pas:=true;
+ch:=readkey;if ch<>'1' then pas:=false;
+ch:=readkey;if ch<>'1' then pas:=false;
+ch:=readkey;if ch<>'1' then pas:=false;
+ch:=readkey;if ch<>'1' then pas:=false;
+ch:=readkey;if ch<>'1' then pas:=false;
+ch:=readkey;if ch<>'1' then pas:=false;
+ch:=readkey;if ch<>'1' then pas:=false;
+ch:=readkey;if ch<>'1' then pas:=false;
+end;

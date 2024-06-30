@@ -1,0 +1,26 @@
+procedure eror1;
+const x=200;y=300;
+label 1;
+begin
+new(save);
+getimage(x,y,x+289,y+59,save^);
+setviewport(x,y,x+289,y+59,clipon);
+clearviewport;
+setcolor(4);
+for i:=0 to 59 do line(0,i,289,i);
+setcolor(10);
+rectangle(0,0,289,59);
+setcolor(15);
+outtextxy(100,7,'I/O ERROR:');
+setcolor(14);
+outtextxy(40,27,'Your file couldn''t be found.');
+outtextxy(40,37,'It doesn''t exists. Sorry...');
+repeat
+ch:=readkey;
+if (ch=#13) or (ch=#27) then goto 1;
+until false ;
+1:setviewport(0,0,getmaxx,getmaxy,clipon);
+putimage(x,y,save^,0);
+dispose(save);
+ch:=#0;
+end;

@@ -1,0 +1,16 @@
+procedure print(x,y,k,z,l:integer;s:string);
+var m,d:integer;
+begin
+m:=100;d:=100;
+settextstyle(z,0,0);settextjustify(1,2);
+setusercharsize(m,d,4,l);
+while textwidth(s)<k do begin
+m:=round(m*1.01);
+setusercharsize(m,d,4,l);
+end;
+while textwidth(s)>k do begin
+d:=round(d*1.01);
+setusercharsize(m,d,4,l);
+end;
+outtextxy(x,y,s);
+end;

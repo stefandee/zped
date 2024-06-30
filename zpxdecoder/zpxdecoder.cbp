@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE CodeBlocks_project_file>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="1"/>
+	<Project>
+		<Option title="ZPX to BMP Converter"/>
+		<Option makefile="Makefile"/>
+		<Option makefile_is_custom="0"/>
+		<Option default_target="1"/>
+		<Option active_target="1"/>
+		<Option compiler="0"/>
+		<Build>
+			<Target title="Release">
+				<Option output="zpx2bmp.exe"/>
+				<Option working_dir="."/>
+				<Option object_output=".objs"/>
+				<Option deps_output=".deps"/>
+				<Option type="1"/>
+				<Option compiler="0"/>
+				<Option projectResourceIncludeDirsRelation="1"/>
+			</Target>
+			<Target title="Debug">
+				<Option output="zpx2bmp.exe"/>
+				<Option working_dir="."/>
+				<Option object_output=".objs"/>
+				<Option deps_output=".deps"/>
+				<Option type="1"/>
+				<Option compiler="0"/>
+				<Option parameters="-in SPR2.JEU -out SPR2.BMP"/>
+				<Option projectResourceIncludeDirsRelation="1"/>
+				<Compiler>
+					<Add option="-g"/>
+				</Compiler>
+			</Target>
+		</Build>
+		<Linker>
+			<Add library="mingw32"/>
+			<Add library="SDLmain"/>
+			<Add library="SDL"/>
+		</Linker>
+		<Unit filename="cb.bmp">
+			<Option compilerVar=""/>
+			<Option compile="0"/>
+			<Option link="0"/>
+			<Option target="Release"/>
+			<Option target="Debug"/>
+		</Unit>
+		<Unit filename="main.cpp">
+			<Option compilerVar="CPP"/>
+			<Option target="Release"/>
+			<Option target="Debug"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

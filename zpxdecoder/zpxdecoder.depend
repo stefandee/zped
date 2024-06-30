@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1185963088 d:\home\karg\personal\fpc\zpxdecoder\main.cpp
+	<cstdlib>
+	<stdlib.h>
+	<SDL/SDL.h>
+	<stdio.h>
+	<string>
+	<iostream>
+

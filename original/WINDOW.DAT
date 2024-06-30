@@ -1,0 +1,15 @@
+procedure setwstyle(i,j,k,l:integer);
+begin
+ b1:=i;b2:=j;pa:=k;w:=l-1;
+end;
+procedure window(x1,y1,x2,y2:integer);
+var i:integer;
+begin
+ setfillstyle(1,pa);bar(x1,y1,x2,y2);
+ for i:=0 to w do begin
+ setcolor(b1);line(x1+i+1,y1+i,x2-i-1,y1+i);
+              line(x1+i,y1+i+1,x1+i,y2-i-1);
+ setcolor(b2);line(x1+i+1,y2-i,x2-i-1,Y2-i);
+              line(x2-i,y1+i+1,x2-i,y2-i-1);
+ end;
+end;
